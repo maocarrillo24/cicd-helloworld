@@ -13,20 +13,21 @@ commands:
     steps:
       - run: curl << parameters.url >>
 
-echo:
-  parameters:
-    message:
-      type: string
-      default: "hello world"
-  steps:
-    - run: echo << parameters.message >>
+  echo:
+    parameters:
+      message:
+        type: string
+        default: "hello world"
+    steps:
+      - run: echo << parameters.message >>
 
 jobs:
   hello-job:
     executor: node
     steps:
       - checkout
-      - echo
+      - echo:
+          message: "Hello, world!"
 
 worklows:
   my-workflow:
